@@ -20,7 +20,25 @@ public class RegistrationRiskTest extends BaseTest {
     void saveRequiredFieldRiskTest() throws InterruptedException {
         basePage.openPage().authorization();
         registrationRiskPage.openRegistrationRiskPage().
-                fieldDateRealization();
+                fieldDateRealization().
+                fieldDateDetection().
+                fieldGuiltyPerson().
+                fieldDepartment().
+                fieldTypeEvent().
+                fieldDescrIbeEvent().
+                fieldMeasureEvent().
+                fieldBusinessProcessEvent().
+                saveEventRisk().
+                succeedSaveEventRisk();
+    }
+
+    @Test
+    @DisplayName("Unsuccessful save risk without required fields test")
+    void saveWithoutRequiredFieldRiskTest() throws InterruptedException {
+        basePage.openPage().authorization();
+        registrationRiskPage.openRegistrationRiskPage().
+                saveEventRisk().
+                failSaveEventRisk();
     }
 
 }
